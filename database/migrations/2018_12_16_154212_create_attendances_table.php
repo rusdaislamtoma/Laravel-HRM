@@ -18,8 +18,8 @@ class CreateAttendancesTable extends Migration
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->date('date');
-            $table->string('in_time',10)->nullable();
-            $table->string('out_time',10)->nullable();
+            $table->string('in_time',14)->nullable();
+            $table->string('out_time',14)->nullable();
             $table->enum('status',['Present','Absent']);
             $table->timestamps();
         });

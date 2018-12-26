@@ -22,7 +22,7 @@ class CreateTransactionTable extends Migration
             $table->enum('type',['Income','Expense']);
             $table->text('description');
             $table->date('date');
-            $table->float('amount',2);
+            $table->float('amount',10,2);
             $table->timestamps();
         });
     }

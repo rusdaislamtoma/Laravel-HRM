@@ -15,11 +15,12 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('employee_id',10)->unique();
+            $table->enum('type',['Admin','Employee']);
+            $table->string('employee_id',15)->unique();
             $table->unsignedInteger('department_id');
-            $table->foreign('department_id')->references(id)->on(departments);
+            $table->foreign('department_id')->references('id')->on('departments');
             $table->unsignedInteger('designation_id');
-            $table->foreign('designation_id')->references(id)->on(designations);
+            $table->foreign('designation_id')->references('id')->on('designations');
             $table->string('name');
             $table->date('dob')->nullable();
             $table->string('contact_no',14);

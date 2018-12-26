@@ -16,7 +16,7 @@ class CreateDesignationTable extends Migration
         Schema::create('designations', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('department_id');
-            $table->foreign('department_id')->references('id')->on(departments);
+            $table->foreign('department_id')->references('id')->on('departments');
             $table->string('name');
             $table->enum('status',['Active','Inactive']);
             $table->timestamps();
