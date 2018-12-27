@@ -89,7 +89,12 @@
                 <li><a href="#"><i class="fa fa-cog"></i>Settings</a></li>
                 <li class="dropdown-divider"></li>
                 <li><a href="lock-screen.html"><i class="fa fa-lock"></i>Lock Screen</a></li>
-                <li><a href="#"><i class="fa fa-power-off"></i>Logout</a></li>
+                <li>
+                    <form method="post" action="{{ route('logout') }}">
+                        @csrf
+                        <input type="submit" value="Logout">
+                    </form>
+                </li>
             </ul>
         </li>
         <!-- Nav User End -->
