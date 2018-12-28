@@ -30,13 +30,14 @@
         <!-- Page Header Start -->
         <section class="page--header">
             <div class="container-fluid">
-               @yield('contentHeader')
+               @include('admin.layouts._contentHeader')
             </div>
         </section>
         <!-- Page Header End -->
 
         <!-- Main Content Start -->
         <section class="main--content">
+            @include('admin.layouts._messages')
             @yield('contentBody')
         </section>
         <!-- Main Content End -->

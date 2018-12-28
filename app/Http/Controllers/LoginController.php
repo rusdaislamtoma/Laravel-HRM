@@ -27,7 +27,7 @@ class LoginController extends Controller
             }
         }
         else{
-            session()->flash('error','Email or Password Invald');
+            session()->flash('error','Email or Password Invalid');
 
         }
         return redirect('/');

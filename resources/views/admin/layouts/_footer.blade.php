@@ -1,1 +1,1 @@
-<p>Copyright &copy; <a href="#">DAdmin</a>. All Rights Reserved.</p>
+<p>Copyright &copy; <a href="#">HRMS Project</a>. All Rights Reserved.</p>

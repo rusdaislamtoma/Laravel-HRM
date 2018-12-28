@@ -3,7 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <!-- ==== Document Title ==== -->
-<title> HRMS Admin </title>
+<title>{{ $title }} - HRMS Admin </title>
 
 <!-- ==== Document Meta ==== -->
 <meta name="author" content="">

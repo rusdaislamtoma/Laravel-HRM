@@ -64,7 +64,7 @@
                         <div class="m-account--form">
                             <!-- Logo Start -->
                             <div class="logo">
-                                <img src="assets/img/logo.png" alt="">
+                                <img src={{ asset("assets/img/logo.png") }} alt="">
                             </div>
                             <!-- Logo End -->
                             @include('admin.layouts._validation_messages')
