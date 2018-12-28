@@ -6,7 +6,7 @@
     </div>
 
     <div class="profile--name">
-        <a href="profile.html" class="btn-link">Henry Foster</a>
+        <a href="profile.html" class="btn-link">{{ auth()->user()->name }}</a>
     </div>
 
     <div class="profile--nav">

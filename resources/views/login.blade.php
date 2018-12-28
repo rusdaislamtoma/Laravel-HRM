@@ -52,8 +52,7 @@
                     <!-- Login Content Start -->
                     <div class="m-account--content-w" data-bg-img={{ asset("assets/img/account/ad.jpg") }}>
                         <div class="m-account--content">
-                            <h2 class="h2">Don't have an account?</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            <h3>Don't have an account?</h3>
                         </div>
                     </div>
                     <!-- Login Content End -->
