@@ -62,7 +62,7 @@ class DepartmentController extends Controller
         $department->name = $request->name;
         $department->status = $request->status;
         $department->save();
-        session()->flash('success','Department stored successfully');
+        session()->flash('success','Department Stored Successfully');
         return redirect()->route('department.index');
 
 
@@ -111,7 +111,7 @@ class DepartmentController extends Controller
         $department->name = $request->name;
         $department->status = $request->status;
         $department->save();
-        session()->flash('success','Department updated successfully');
+        session()->flash('success','Department Updated Successfully');
         return redirect()->route('department.index');
     }
 

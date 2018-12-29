@@ -55,7 +55,7 @@
 
                     <ul>
                         <li><a href="{{ route('department.index') }}">Departments</a></li>
-                        <li><a href="#">Designations</a></li>
+                        <li><a href="{{ route('designation.index') }}">Designations</a></li>
 
                     </ul>
                 </li>
