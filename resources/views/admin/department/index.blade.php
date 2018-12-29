@@ -5,15 +5,24 @@
         <div class="records--header">
 
             <div class="actions mx-auto">
-                <form action="#" class="search flex-wrap flex-md-nowrap">
-                    <input type="text" class="form-control" placeholder="Department Name..." required>
-                    <select name="select" class="form-control">
-                        <option value="" selected>Department Status</option>
-                    </select>
-                    <button type="submit" class="btn btn-rounded"><i class="fa fa-search"></i></button>
-                </form>
+                @php
+                  $name=null;
+                   if(isset($_GET['name'])){
+                      $name = $_GET['name'];
+                   }
 
-                <a href="{{ route('department.create') }}" class="addProduct btn btn-lg btn-rounded btn-warning">Add Department</a>
+                   $status=null;
+                   if(isset($_GET['status'])){
+                      $status= $_GET['status'];
+                   }
+                @endphp
+                {{ Form::open(['method'=>'get','class'=>'search flex-wrap flex-md-nowrap']) }}
+                    {{ Form::text('name',$name,['class'=>'form-control','placeholder'=>'Department Name']) }}
+                    {{ Form::select('status',['Active'=>'Active','Inactive'=>'Inactive'],$status,['class'=>'form-control','placeholder'=>'Select Status']) }}
+                    <button type="submit" class="btn btn-rounded"><i class="fa fa-search"></i></button>
+                {{ Form::close() }}
+
+                <a href="{{ route('department.create') }}" class="addProduct btn btn-lg btn-rounded btn-warning">Add New Department</a>
             </div>
         </div>
         <!-- Records Header End -->
@@ -21,7 +30,9 @@
     <div class="panel">
         <!-- Records List Start -->
         <div>
+            <h3 style="text-align: center;color:#1b4b72">Department List</h3>
             <table class="table table-striped custom-table m-b-0 datatable">
+
                 <thead>
                 <tr>
                     <th>#</th>
@@ -31,9 +42,10 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($departments as $key=>$department)
+
+                @foreach($departments as $department)
                 <tr>
-                    <td>{{ $key+1 }}</td>
+                    <td>{{ $department->id }}</td>
                     <td>{{ $department->name }}</td>
                     <td>{{ $department->status }}</td>
 
