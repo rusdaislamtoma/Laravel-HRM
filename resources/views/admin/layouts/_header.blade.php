@@ -1,7 +1,7 @@
 <div class="navbar--header">
     <!-- Logo Start -->
     <a href="index.html" class="logo">
-        <img src="assets/img/logo.png" alt="">
+        <img src="{{asset('assets/img/logo.png')}}" alt="">
     </a>
     <!-- Logo End -->
 
@@ -78,7 +78,7 @@
         <!-- Nav User Start -->
         <li class="nav-item dropdown nav--user online">
             <a href="#" class="nav-link" data-toggle="dropdown">
-                <img src="assets/img/avatars/01_80x80.png" alt="" class="rounded-circle">
+                <img src = "{{asset('user_images/'.auth()->id().'.jpg') }}" alt="" class="rounded-circle">
                 <span>{{ auth()->user()->name }}</span>
                 <i class="fa fa-angle-down"></i>
             </a>

@@ -4,6 +4,7 @@
         <!-- Records Header Start -->
         <div class="records--header">
 
+
             <div class="actions mx-auto">
                 @php
                   $name=null;
@@ -22,7 +23,9 @@
                     <button type="submit" class="btn btn-rounded"><i class="fa fa-search"></i></button>
                 {{ Form::close() }}
 
-                <a href="{{ route('department.create') }}" class="addProduct btn btn-lg btn-rounded btn-warning">Add New Department</a>
+                <a href="{{ route('user.create') }}" class="addProduct btn btn-lg btn-rounded btn-warning"><i class="fa fa-plus"></i> Add New Department</a>
+
+
             </div>
         </div>
         <!-- Records Header End -->

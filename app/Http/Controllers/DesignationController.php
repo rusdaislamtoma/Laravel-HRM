@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Department;
 use App\Designation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DesignationController extends Controller
 {
@@ -15,7 +16,7 @@ class DesignationController extends Controller
      */
     public function index(Request $request)
     {
-        $data['title'] = 'Designation List';
+        $data['title'] = 'Designations';
         $designations= new Designation();
         $designations=$designations->with('relDepartment');
         $render=[];

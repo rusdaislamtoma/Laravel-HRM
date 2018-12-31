@@ -1,7 +1,7 @@
 <div class="sidebar--profile">
     <div class="profile--img">
         <a href="profile.html">
-            <img src={{ asset("assets/img/avatars/01_80x80.png") }} alt="" class="rounded-circle">
+            <img src="{{asset('user_images/'.auth()->id().'.jpg') }}" alt="" class="rounded-circle">
         </a>
     </div>
 
@@ -45,6 +45,13 @@
                     <a href="{{ route('dashboard') }}">
                         <i class="fa fa-home"></i>
                         <span>Dashboard</span>
+                    </a>
+                </li>
+
+                <li class="active">
+                    <a href="{{ route('user.index') }}">
+                        <i class="fa fa-home"></i>
+                        <span>Users</span>
                     </a>
                 </li>
                 <li>

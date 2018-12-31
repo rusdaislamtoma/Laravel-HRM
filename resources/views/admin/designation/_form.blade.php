@@ -1,4 +1,4 @@
-@include('admin.layouts._validation_messages')
+
 <div class="form-group">
     <label>
         <span class="label-text">Department Name</span><span class="text-danger">*</span>

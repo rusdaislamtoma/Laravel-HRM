@@ -6,8 +6,9 @@
                 <!-- Panel Start -->
                 <div class="panel">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Designation Entry Form</h3>
+                        <h3 class="panel-title text-primary" style="font-size: 25px">Designation Entry Form</h3>
                     </div>
+                    @include('admin.layouts._validation_messages')
 
                     <div class="panel-content">
                       @include('admin.designation._form')
