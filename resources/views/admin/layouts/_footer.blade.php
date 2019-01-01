@@ -1,1 +1,1 @@
-<p>Copyright &copy; <a href="#">HRMS Project</a>. All Rights Reserved.</p>
+<p>Copyright &copy; <a href="#">HRM Application</a>. All Rights Reserved.</p>

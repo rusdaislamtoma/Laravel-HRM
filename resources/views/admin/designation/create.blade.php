@@ -5,7 +5,7 @@
             {{ Form::open(['route'=>'designation.store']) }}
                 <!-- Panel Start -->
                 <div class="panel">
-                    <div class="panel-heading" style="padding: 30px 160px">
+                    <div class="panel-heading p-sm-4">
                         <h3 class="panel-title text-primary" style="font-size: 25px">Designation Entry Form</h3>
                     </div>
                     @include('admin.layouts._validation_messages')

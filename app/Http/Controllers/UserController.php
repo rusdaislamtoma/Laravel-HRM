@@ -115,7 +115,9 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $data['user']= User::with(['relPayroll','relDepartment','relDesignation'])->where('id',$id)->first();
+        $data['title'] = $data['user']->name.' '.'Profile';
+        return view( 'admin.user.show',$data);
     }
 
     /**

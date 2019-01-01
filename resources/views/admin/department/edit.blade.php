@@ -5,7 +5,7 @@
         {{ Form::model($department,['route'=>['department.update',$department->id],'method'=>'PUT']) }}
         <!-- Panel Start -->
             <div class="panel">
-                <div class="panel-heading" style="padding: 30px 150px">
+                <div class="panel-heading p-sm-4">
                     <h3 class="panel-title text-primary" style="font-size: 25px">Department Update Form</h3>
                 </div>
 
