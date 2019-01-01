@@ -6,8 +6,8 @@
 
    <!-- Panel Start -->
        <div class="panel">
-           <div class="panel-heading">
-               <h3 class="panel-title">Designation Update Form</h3>
+           <div class="panel-heading" style="padding: 30px 150px">
+               <h3 class="panel-title text-primary" style="font-size: 25px">Designation Update Form</h3>
            </div>
 
            <div class="panel-content">

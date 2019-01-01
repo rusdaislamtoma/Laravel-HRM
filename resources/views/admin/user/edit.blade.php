@@ -5,7 +5,7 @@
         {{ Form::model($user,['route'=>['user.update',$user->id],'method'=>'PUT','files'=>true]) }}
         <!-- Panel Start -->
             <div class="panel">
-                <div class="panel-heading" >
+                <div class="panel-heading" style="padding: 30px 210px">
                     <h3 class="panel-title text-primary" style="font-size: 25px">User Update Form</h3>
                 </div>
                 @include('admin.layouts._validation_messages')

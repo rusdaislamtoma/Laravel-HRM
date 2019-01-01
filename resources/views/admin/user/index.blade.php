@@ -73,6 +73,7 @@
 
                                 <div class="dropdown-menu">
                                     <a href="{{ route('user.edit',$user->id) }}" class="dropdown-item">Edit</a>
+                                    <a href="{{ route('payroll.manage',$user->id) }}" class="dropdown-item">Payroll Manager</a>
                                     <a href="#" class="dropdown-item" onclick="return confirm('Delete All infromation from this record.')">Delete</a>
                                 </div>
                             </div>

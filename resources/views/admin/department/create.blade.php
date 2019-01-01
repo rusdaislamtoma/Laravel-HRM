@@ -5,7 +5,7 @@
             {{ Form::open(['route'=>'department.store']) }}
                 <!-- Panel Start -->
                 <div class="panel">
-                    <div class="panel-heading">
+                    <div class="panel-heading" style="padding: 30px 160px">
                         <h3 class="panel-title text-primary" style="font-size: 25px">Department Entry Form</h3>
                     </div>
                     @include('admin.layouts._validation_messages')
