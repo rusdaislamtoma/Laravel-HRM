@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 @section('contentBody')
-    <div class="panel">
+    <div class="panel" style="overflow:auto;">
         <!-- Records Header Start -->
         <div class="records--header">
             <div class="col-sm-12 text-right m-b-30">
@@ -40,7 +40,7 @@
     </div>
     <div class="panel">
         <!-- Records List Start -->
-        <div>
+        <div class="table-responsive">
             <h3 style="text-align: center;color:#1b4b72">User List</h3>
             <table class="table table-striped custom-table m-b-0 datatable">
 
@@ -60,7 +60,7 @@
                 @foreach($users as $user)
 
                     <tr>
-                        <td>{{ $user->id }}</td>
+                        <td>{{ $serial++ }}</td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->type }}</td>
                         <td>{{ $user->relDepartment->name }}</td>

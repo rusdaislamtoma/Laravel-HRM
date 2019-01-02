@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 @section('contentBody')
-    <div class="panel">
+    <div class="panel" style="overflow:auto;">
         <!-- Records Header Start -->
         <div class="records--header">
 
@@ -37,7 +37,7 @@
 
     <div class="panel">
         <!-- Records List Start -->
-        <div>
+        <div class="table-responsive">
             <h3 style="text-align: center;color:#1b4b72">Designation List</h3>
             <table class="table table-striped custom-table m-b-0 datatable">
                 <thead>
@@ -52,7 +52,7 @@
                 <tbody>
                 @foreach($designations as $designation)
                 <tr>
-                    <td>{{ $designation->id }}</td>
+                    <td>{{ $serial++ }}</td>
                     <td>{{ $designation->name }}</td>
                     <td>{{ $designation->relDepartment->name }}</td>
                     <td>{{ $designation->status }}</td>

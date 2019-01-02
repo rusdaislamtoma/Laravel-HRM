@@ -57,6 +57,19 @@
                 <li>
                     <a href="#">
                         <i class="fa fa-shopping-cart"></i>
+                        <span>Transactions</span>
+                    </a>
+
+                    <ul>
+
+                        <li><a href="{{ route('transaction.index','Income') }}">Income</a></li>
+                        <li><a href="{{ route('transaction.index','Expense') }}">Expense</a></li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-shopping-cart"></i>
                         <span>Settings</span>
                     </a>
 

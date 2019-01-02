@@ -32,9 +32,10 @@ class TransactionHeadController extends Controller
             $transaction_heads=$transaction_heads->where('status',$request->status);
             $render['status']=$request->status;
         }
-        $transaction_heads= $transaction_heads->paginate(1);
+        $transaction_heads= $transaction_heads->paginate(2);
         $transaction_heads= $transaction_heads->appends($render);
         $data['transaction_heads'] = $transaction_heads;
+        $data['serial'] = $this->managePagination($transaction_heads);
         return view('admin.transaction_head.index',$data);
     }
 
@@ -117,6 +118,16 @@ class TransactionHeadController extends Controller
         $transaction_head->save();
         session()->flash('success','Transaction head updated successfully');
         return redirect()->route('transaction-head.index');
+    }
+
+    function managePagination($obj)
+    {
+        $serial=1;
+        if($obj->currentPage()>1)
+        {
+            $serial=(($obj->currentPage()-1)*$obj->perPage())+1;
+        }
+        return $serial;
     }
 
     /**

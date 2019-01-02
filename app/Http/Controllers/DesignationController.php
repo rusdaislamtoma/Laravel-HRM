@@ -35,10 +35,11 @@ class DesignationController extends Controller
             $designations=$designations->where('status',$request->status);
             $render['status']=$request->status;
         }
-        $designations= $designations->paginate(1);
+        $designations= $designations->paginate(2);
         $designations= $designations->appends($render);
         $data['designations'] = $designations;
         $data['departments']=Department::where('status','Active')->pluck('name','id');
+        $data['serial'] = $this->managePagination( $designations);
         return view('admin.designation.index',$data);
     }
 
@@ -125,6 +126,17 @@ class DesignationController extends Controller
         session()->flash('success','Designation Updated Successfully');
         return redirect()->route('designation.index');
     }
+
+    function managePagination($obj)
+    {
+        $serial=1;
+        if($obj->currentPage()>1)
+        {
+            $serial=(($obj->currentPage()-1)*$obj->perPage())+1;
+        }
+        return $serial;
+    }
+
 
     /**
      * Remove the specified resource from storage.

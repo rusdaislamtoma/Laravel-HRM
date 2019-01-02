@@ -40,9 +40,10 @@ class UserController extends Controller
             $users=$users->where('status',$request->status);
             $render['status']=$request->status;
         }
-        $users= $users->paginate(1);
+        $users= $users->paginate(2);
         $users= $users->appends($render);
         $data['users'] = $users;
+        $data['serial'] = $this->managePagination($users);
         return view('admin.user.index',$data);
     }
 
@@ -185,6 +186,16 @@ class UserController extends Controller
         $user->save();
         session()->flash('success','User Updated Successfully');
         return redirect()->route('user.index');
+    }
+
+    function managePagination($obj)
+    {
+        $serial=1;
+        if($obj->currentPage()>1)
+        {
+            $serial=(($obj->currentPage()-1)*$obj->perPage())+1;
+        }
+        return $serial;
     }
 
     /**

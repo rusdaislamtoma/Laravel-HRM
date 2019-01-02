@@ -31,6 +31,7 @@ class DepartmentController extends Controller
         $departments = $departments->paginate(2);
         $departments = $departments->appends($render);
         $data['departments'] = $departments;
+        $data['serial'] = $this->managePagination($departments);
         return view("admin.department.index",$data);
     }
 
@@ -114,6 +115,16 @@ class DepartmentController extends Controller
         $department->save();
         session()->flash('success','Department Updated Successfully');
         return redirect()->route('department.index');
+    }
+
+    function managePagination($obj)
+    {
+        $serial=1;
+        if($obj->currentPage()>1)
+        {
+            $serial=(($obj->currentPage()-1)*$obj->perPage())+1;
+        }
+        return $serial;
     }
 
     /**

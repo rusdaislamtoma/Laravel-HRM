@@ -18,7 +18,7 @@ class CreateTransactionTable extends Migration
             $table->string('client');
             $table->unsignedInteger('transaction_head_id');
             $table->foreign('transaction_head_id')->references('id')->on('transaction_heads');
-            $table->string('transaction_id',10)->unique();
+            $table->string('transaction_id',15)->unique();
             $table->enum('type',['Income','Expense']);
             $table->text('description');
             $table->date('date');
