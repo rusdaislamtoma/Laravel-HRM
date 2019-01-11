@@ -19,7 +19,7 @@ class TransactionController extends Controller
             $data['title'] = 'Transactions';
             $data['heading'] = $transaction_type.' '.'Details';
             $transactions = new Transaction();
-            $transactions = $transactions->with('relTransactionHead');
+            $transactions = $transactions->with('relTransactionHead','relUser');
             $transactions = $transactions->where('type', $transaction_type);
             $render = [];
             if (isset($request->transaction_id)) {

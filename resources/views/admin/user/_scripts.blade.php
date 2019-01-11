@@ -5,7 +5,7 @@
             var url = "{{url('ajax_designation_by_id')}}" + "/"+ departmentId;
             $.ajax({
                 url:url,
-                tupe:'GET',
+                type:'GET',
                 success: function(data){
                    $('#designationDiv').html(data);
                 }

@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Department;
 use App\Designation;
 use App\User;
@@ -116,9 +115,24 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $data['user']= User::with(['relPayroll','relDepartment','relDesignation'])->where('id',$id)->first();
-        $data['title'] = $data['user']->name.' '.'Profile';
-        return view( 'admin.user.show',$data);
+        if(auth()->user()->type=='Admin'){
+            $data['user']= User::with(['relPayroll','relDepartment','relDesignation'])
+                ->where('id',$id)->first();
+            $data['title'] = $data['user']->name.' '.'Profile';
+            return view( 'admin.user.show',$data);
+
+        }
+
+        elseif(auth()->id()==$id){
+            $data['user']= User::with(['relPayroll','relDepartment','relDesignation'])
+                ->where('id',$id)->first();
+            $data['title'] = $data['user']->name.' '.'Profile';
+            return view( 'admin.user.show',$data);
+
+        }
+        return redirect()->back();
+
+
     }
 
     /**
@@ -172,6 +186,7 @@ class UserController extends Controller
             $user->password= bcrypt($request->password);
         }
         $user->status= $request->status;
+        $user->save();
 
         if($request->hasFile('image')){
             $image = $request->file('image');
@@ -183,7 +198,7 @@ class UserController extends Controller
 
         }
 
-        $user->save();
+
         session()->flash('success','User Updated Successfully');
         return redirect()->route('user.index');
     }

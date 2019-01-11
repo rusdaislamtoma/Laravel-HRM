@@ -5,7 +5,7 @@
         <!-- Page Title End -->
 
         <ul class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">HRMS</a></li>
+            <li class="breadcrumb-item"><a href="#"><span class="text-info">{{$company_name->value }}</span></a></li>
             <li class="breadcrumb-item active"><span>{{ $title }}</span></li>
         </ul>
     </div>

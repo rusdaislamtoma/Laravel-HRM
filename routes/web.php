@@ -6,21 +6,29 @@ Route::Post('/login', 'LoginController@login')->name('login');
 
 Route::middleware('auth')->group(function (){
     Route::get('dashboard','DashboardController@index')->name('dashboard');
-    Route::resource('department','DepartmentController');
-    Route::resource('designation','DesignationController');
-    Route::resource('transaction-head','TransactionHeadController');
-    Route::resource('user','UserController');
+    Route::middleware('user-access-control')->group(function () {
+        Route::resource('department', 'DepartmentController');
+        Route::resource('designation', 'DesignationController');
+        Route::resource('transaction-head', 'TransactionHeadController');
+        Route::resource('user', 'UserController')->except(['show']);
 
-    Route::get('user/{user_id}/payroll','PayrollController@manage')->name('payroll.manage');
-    Route::put('user/{user_id}/payroll','PayrollController@update')->name('payroll.update');
+        Route::get('user/{user_id}/payroll', 'PayrollController@manage')->name('payroll.manage');
+        Route::put('user/{user_id}/payroll', 'PayrollController@update')->name('payroll.update');
 
-    // Transaction Routes
-    Route::get('transaction/{transaction_type}','TransactionController@index')->name('transaction.index');
-    Route::get('transaction/{transaction_type}/create','TransactionController@create')->name('transaction.create');
-    Route::post('transaction/{transaction_type}','TransactionController@store')->name('transaction.store');
+        // Transaction Routes
 
-    // Ajax route
-    Route::get('ajax_designation_by_id/{id}','SettingController@ajaxDesignationByDepartmentId')->name('ajaxDesignationByDepartmentId');
+        Route::get('transaction/{transaction_type}/create', 'TransactionController@create')->name('transaction.create');
+        Route::post('transaction/{transaction_type}', 'TransactionController@store')->name('transaction.store');
+
+        // Ajax route
+        Route::get('ajax_designation_by_id/{id}', 'SettingController@ajaxDesignationByDepartmentId')->name('ajaxDesignationByDepartmentId');
+        //setting Route
+
+        Route::get('application_settings', 'SettingController@application_settings')->name('application_settings');
+        Route::post('application_settings', 'SettingController@update_application_settings')->name('application_settings.update');
+    });
+    Route::resource('user', 'UserController')->only(['show']);
+    Route::get('transaction/{transaction_type}', 'TransactionController@index')->name('transaction.index');
 
     Route::post('logout',function (){
         auth()->logout();
@@ -29,7 +37,11 @@ Route::middleware('auth')->group(function (){
 
 
 });
+Route::get('/mailable', function () {
 
+    $data['employee']=\App\User::with('relPayRoll')->first();
+    return new App\Mail\SendPaySlip($data);
+});
 
 
 

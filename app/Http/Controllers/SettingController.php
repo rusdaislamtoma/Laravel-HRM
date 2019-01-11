@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Designation;
 use Illuminate\Http\Request;
+use App\Setting;
 
 class SettingController extends Controller
 {
@@ -19,74 +20,56 @@ class SettingController extends Controller
 
     }
 
-    public function index()
+    public function application_settings()
     {
-        //
+        $data['title']='Edit company settings';
+        $data['settings']['logo']= Setting::where(['type'=>'logo'])->first();
+        $data['settings']['company_name']= Setting::where(['type'=>'company_name'])->first();
+        return view('admin.setting.company_settings',$data);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function update_application_settings(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'logo' => 'mimes:png'
+        ]);
+        $setting= Setting::where('type','company_name')->first();
+        $setting->value=$request->company_name;
+        $setting->save();
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+       if($request->hasFile('logo'))
+        {
+            $setting= Setting::where('type','logo')->first();
+            $old_file=$setting->value;
+           // dd($old_file);
+            $image= $request->file('logo');
+            if($image->getClientOriginalExtension()=='png') {
+                $image->move('assets', $image->getClientOriginalName());
+                //dd('assets',$image->getClientOriginalName());
+                //dd('assets',$image->getClientOriginalName());
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+                $setting->value = 'assets/' . $image->getClientOriginalName();
+                $setting->save();
+                unlink($old_file);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+            }
+        }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+      /*  if($request->hasFile('logo')){
+            $setting= Setting::where('type','logo')->first();
+            $old_file=$setting->value;
+            $image= $request->file('logo');
+            if($image->getClientOriginalExtension()=='png'){
+                //dd($user->id . '.' . $image->getClientOriginalExtension());
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+                $image->move('assets',$image->getClientOriginalName());
+                $setting->value= 'assets/'.$image->getClientOriginalName();
+                $setting->save();
+                unlink($old_file);
+            }
+
+        }*/
+        session()->flash('success','Company setting updated');
+        return redirect()->back();
+
     }
 }

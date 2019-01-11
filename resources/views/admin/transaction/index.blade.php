@@ -4,29 +4,17 @@
         <!-- Records Header Start -->
         <div class="records--header">
             <div class="col-sm-12 text-right m-b-30">
+                @if(auth()->user()->type=='Admin')
                 <a href="{{ route('transaction.create',$transaction_type) }}" class="addProduct btn btn-lg btn-rounded btn-warning"><i class="fa fa-plus"></i> Add New {{ $transaction_type }}</a>
-
+                @endif
             </div>
 
             <div class="actions mx-auto">
-                @php
-                    $transaction_id=null;
-                    if(isset($_GET['transaction_id'])){
-                        $transaction_id=$_GET['transaction_id'];
-                    }
-                    $client_name=null;
-                    if(isset($_GET['client_name'])){
-                        $client_name=$_GET['client_name'];
-                    }
-                    $transaction_head_id=null;
-                    if(isset($_GET['transaction_head_id'])){
-                        $transaction_head_id=$_GET['transaction_head_id'];
-                    }
-                @endphp
-                {{ Form::open(['method'=>'get','class'=>'search flex-wrap flex-md-nowrap']) }}
-                {{ Form::text('transaction_id',$transaction_id,['class'=>'form-control','placeholder'=>'Transaction ID']) }}
-                {{ Form::text('client_name',$client_name,['class'=>'form-control','placeholder'=>'Client Name']) }}
-                {{ Form::select('transaction_head_id',$transaction_heads,$transaction_head_id,['class'=>'form-control','placeholder'=>'Select Transaction Head']) }}
+
+                {{ Form::model(request(),['method'=>'get','class'=>'search flex-wrap flex-md-nowrap']) }}
+                {{ Form::text('transaction_id',null,['class'=>'form-control','placeholder'=>'Transaction ID']) }}
+                {{ Form::text('client_name',null,['class'=>'form-control','placeholder'=>'Client Name']) }}
+                {{ Form::select('transaction_head_id',$transaction_heads,null,['class'=>'form-control','placeholder'=>'Select Transaction Head']) }}
                 <button type="submit" class="btn btn-rounded"><i class="fa fa-search"></i></button>
                 {{ Form::close() }}
 
@@ -61,7 +49,13 @@
                         <td>{{ $serial++}}</td>
                         <td>{{ $transaction->transaction_id }}</td>
                         <td>{{ $transaction->relTransactionHead->name }}</td>
-                        <td>{{ $transaction->client }}</td>
+                        <td>
+                            @if(is_numeric($transaction->client))
+                                {{ $transaction->relUser->name }}
+                            @else
+                                {{ $transaction->client }}
+                            @endif
+                        </td>
                         <td>{{ date('d M Y',strtotime($transaction->date)) }}</td>
                         <td>{{ $transaction->amount }}</td>
 
@@ -70,8 +64,10 @@
                                 <a href="#" class="btn-link" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></a>
 
                                 <div class="dropdown-menu">
+                                    @if(auth()->user()->type=='Admin')
                                     <a href="#" class="dropdown-item">Edit</a>
                                     <a href="#" class="dropdown-item" onclick="return confirm('Delete All infromation from this record.')">Delete</a>
+                                    @endif
                                 </div>
                             </div>
                         </td>

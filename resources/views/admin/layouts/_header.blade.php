@@ -1,8 +1,10 @@
 <div class="navbar--header">
     <!-- Logo Start -->
-    <a href="index.html" class="logo">
-        <img src="{{asset('assets/img/logo.png')}}" alt="">
-    </a>
+
+       <a href="{{ route('department.index') }}" class="logo">
+           <img src="{{ asset($logo->value) }}" alt="">
+       </a>
+
     <!-- Logo End -->
 
     <!-- Sidebar Toggle Button Start -->
@@ -84,7 +86,7 @@
             </a>
 
             <ul class="dropdown-menu">
-                <li><a href="profile.html"><i class="far fa-user"></i>Profile</a></li>
+                <li><a href="{{ route('user.show',auth()->id()) }}"><i class="far fa-user"></i>Profile</a></li>
                 <li><a href="mailbox_inbox.html"><i class="far fa-envelope"></i>Inbox</a></li>
                 <li><a href="#"><i class="fa fa-cog"></i>Settings</a></li>
                 <li class="dropdown-divider"></li>

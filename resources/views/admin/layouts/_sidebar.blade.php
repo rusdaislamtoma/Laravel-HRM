@@ -1,12 +1,12 @@
 <div class="sidebar--profile">
     <div class="profile--img">
-        <a href="profile.html">
+        <a href="#">
             <img src="{{asset('user_images/'.auth()->id().'.jpg') }}" alt="" class="rounded-circle">
         </a>
     </div>
 
     <div class="profile--name">
-        <a href="profile.html" class="btn-link">{{ auth()->user()->name }}</a>
+        <a href="#" class="btn-link">{{ auth()->user()->name }}</a>
     </div>
 
     <div class="profile--nav">
@@ -17,12 +17,12 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="lock-screen.html" class="nav-link" title="Lock Screen">
+                <a href="#" class="nav-link" title="Lock Screen">
                     <i class="fa fa-lock"></i>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="mailbox_inbox.html" class="nav-link" title="Messages">
+                <a href="#" class="nav-link" title="Messages">
                     <i class="fa fa-envelope"></i>
                 </a>
             </li>
@@ -47,7 +47,7 @@
                         <span>Dashboard</span>
                     </a>
                 </li>
-
+                @if(auth()->user()->type=='Admin')
                 <li class="active">
                     <a href="{{ route('user.index') }}">
                         <i class="fa fa-home"></i>
@@ -67,6 +67,7 @@
 
                     </ul>
                 </li>
+
                 <li>
                     <a href="#">
                         <i class="fa fa-shopping-cart"></i>
@@ -77,15 +78,22 @@
                         <li><a href="{{ route('department.index') }}">Departments</a></li>
                         <li><a href="{{ route('designation.index') }}">Designations</a></li>
                         <li><a href="{{ route('transaction-head.index') }}">Transaction Heads</a></li>
+                        <li><a href="{{ route('application_settings') }}">Application Settings</a></li>
 
                     </ul>
                 </li>
+                @endif
             </ul>
+        </li>
+
+        <li>
+
+        </li>
+
+        <li>
+
         </li>
 
     </ul>
 </div>
-<!-- Sidebar Navigation End -->
-
-<!-- Sidebar Widgets Start -->
 

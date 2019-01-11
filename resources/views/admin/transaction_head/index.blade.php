@@ -9,24 +9,11 @@
             </div>
 
             <div class="actions mx-auto">
-                @php
-                    $name=null;
-                    if(isset($_GET['name'])){
-                        $name=$_GET['name'];
-                    }
-                    $status=null;
-                    if(isset($_GET['status'])){
-                        $status=$_GET['status'];
-                    }
-                    $type=null;
-                    if(isset($_GET['type'])){
-                        $type=$_GET['type'];
-                    }
-                @endphp
-                {{ Form::open(['method'=>'get','class'=>'search flex-wrap flex-md-nowrap']) }}
-                {{ Form::text('name',$name,['class'=>'form-control','placeholder'=>'Transaction Head Name']) }}
-                {{ Form::select('type',['Income'=>'Income','Expense'=>'Expense'],$type,['class'=>'form-control','placeholder'=>'Select Transaction Type']) }}
-                {{ Form::select('status',['Active'=>'Active','Inactive'=>'Inactive'],$status,['class'=>'form-control','placeholder'=>'Select Status']) }}
+
+                {{ Form::model(request(),['method'=>'get','class'=>'search flex-wrap flex-md-nowrap']) }}
+                {{ Form::text('name',null,['class'=>'form-control','placeholder'=>'Transaction Head Name']) }}
+                {{ Form::select('type',['Income'=>'Income','Expense'=>'Expense'],null,['class'=>'form-control','placeholder'=>'Select Transaction Type']) }}
+                {{ Form::select('status',['Active'=>'Active','Inactive'=>'Inactive'],null,['class'=>'form-control','placeholder'=>'Select Status']) }}
                 <button type="submit" class="btn btn-rounded"><i class="fa fa-search"></i></button>
                 {{ Form::close() }}
 

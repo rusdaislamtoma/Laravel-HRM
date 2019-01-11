@@ -33,11 +33,15 @@
             </div>
 
             <div class="panel">
+                @if($user->relPayroll != null)
                 <div class="panel-heading">
                     <h3 class="panel-title">Payroll &nbsp; &nbsp; &nbsp;</h3>
+                    @if(auth()->user()->type=='Admin')
                     <a href="{{ route('payroll.manage',$user->id) }}" class="btn btn-primary rounded"><i class="fa fa-plus"></i> Edit Payroll</a>
+                    @endif
                 </div>
                 <div class="panel-content panel-about">
+
 
                     <table>
                         <tr>
@@ -72,7 +76,9 @@
                             <td><b>{{ $user->relPayroll->gross }}</b></td>
                         </tr>
                     </table>
+
                 </div>
+                @endif
 
 
             </div>
@@ -81,7 +87,9 @@
         <div class="col-lg-4">
             <!-- Panel Start -->
             <div>
+                @if(auth()->user()->type=='Admin')
                 <a href="{{ route('user.edit',$user->id) }}" class="btn btn-primary rounded mb-2"><i class="fa fa-plus"></i> Edit Profile</a>
+                @endif
             </div>
             <div class="panel">
                 <div class="panel-heading">
@@ -132,113 +140,7 @@
                     </ul>
                 </div>
             </div>
-            <!-- Panel End -->
 
-            <!-- Panel Start -->
-            <div class="panel">
-                <div class="weather--panel text-white bg-blue">
-                    <div class="weather--title">
-                        <i class="fa fa-map-marker-alt"></i>
-                        <span>Dhaka, Bangladesh</span>
-                    </div>
-
-                    <div class="weather--info">
-                        <i class="wi wi-rain-wind"></i>
-                        <span>33°C</span>
-                    </div>
-                </div>
-            </div>
-            <!-- Panel End -->
-
-            <!-- Panel Start -->
-            <div class="panel">
-                <div class="weather--panel text-white bg-orange">
-                    <div class="weather--title">
-                        <i class="fa fa-map-marker-alt"></i>
-                        <span>Melbourne, Autoria</span>
-                    </div>
-
-                    <div class="weather--info">
-                        <i class="wi wi-hot"></i>
-                        <span>35°C</span>
-                    </div>
-                </div>
-            </div>
-            <!-- Panel End -->
-
-            <!-- Panel Start -->
-            <div class="panel">
-                <div class="panel-heading">
-                    <h3 class="panel-title">To-Do List</h3>
-
-                    <div class="dropdown">
-                        <button type="button" class="btn-link dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-ellipsis-v"></i>
-                        </button>
-
-                        <ul class="dropdown-menu">
-                            <li><a href="#"><i class="fa fa-sync"></i>Update Data</a></li>
-                            <li><a href="#"><i class="fa fa-times"></i>Remove Panel</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="todo--panel">
-                    <form action="#">
-                        <ul class="list-group" data-trigger="scrollbar">
-                            <li class="list-group-item">
-                                <label class="todo--label">
-                                    <input type="checkbox" name="checkbox" value="1" class="todo--input" checked>
-                                    <span class="todo--text">Schedule Meeting</span>
-                                </label>
-
-                                <a href="#" class="todo--remove">&times;</a>
-                            </li>
-                            <li class="list-group-item">
-                                <label class="todo--label">
-                                    <input type="checkbox" name="checkbox" value="2" class="todo--input">
-                                    <span class="todo--text">Call Clients To Follow-Up</span>
-                                </label>
-
-                                <a href="#" class="todo--remove">&times;</a>
-                            </li>
-                            <li class="list-group-item">
-                                <label class="todo--label">
-                                    <input type="checkbox" name="checkbox" value="3" class="todo--input" checked>
-                                    <span class="todo--text">Book Flight For Holiday</span>
-                                </label>
-
-                                <a href="#" class="todo--remove">&times;</a>
-                            </li>
-                            <li class="list-group-item">
-                                <label class="todo--label">
-                                    <input type="checkbox" name="checkbox" value="4" class="todo--input">
-                                    <span class="todo--text">Forward Important Tasks</span>
-                                </label>
-
-                                <a href="#" class="todo--remove">&times;</a>
-                            </li>
-                            <li class="list-group-item">
-                                <label class="todo--label">
-                                    <input type="checkbox" name="checkbox" value="6" class="todo--input">
-                                    <span class="todo--text">Important Tasks</span>
-                                </label>
-
-                                <a href="#" class="todo--remove">&times;</a>
-                            </li>
-                        </ul>
-
-                        <div class="input-group">
-                            <input type="text" name="todo" placeholder="Add New Task" class="form-control" autocomplete="off" required>
-
-                            <div class="input-group-btn">
-                                <button type="submit" class="btn-link">+</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <!-- Panel End -->
 
             <!-- Panel Start -->
             <div class="panel">

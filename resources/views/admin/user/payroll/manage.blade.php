@@ -5,7 +5,7 @@
         {{ Form::model($payroll,['route'=>['payroll.update',$user_id],'method'=>'PUT']) }}
         <!-- Panel Start -->
             <div class="panel">
-                <div class="panel-heading" style="padding: 30px 120px">
+                <div class="panel-heading p-sm-4">
                     <h3 class="panel-title text-primary" style="font-size: 25px;">Payroll Entry or Update Form</h3>
                 </div>
                 @include('admin.layouts._validation_messages')
