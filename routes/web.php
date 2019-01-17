@@ -26,6 +26,13 @@ Route::middleware('auth')->group(function (){
 
         Route::get('application_settings', 'SettingController@application_settings')->name('application_settings');
         Route::post('application_settings', 'SettingController@update_application_settings')->name('application_settings.update');
+
+        //Attendance Route
+        Route::get('attendance/index','AttendanceController@index')->name('attendance.index');
+        Route::get('attendance/create', 'AttendanceController@create')->name('attendance.upload');
+        Route::post('attendance/store', 'AttendanceController@store')->name('attendance.store');
+        Route::get('attendance/{user_id}', 'AttendanceController@show')->name('attendance.show');
+
     });
     Route::resource('user', 'UserController')->only(['show']);
     Route::get('transaction/{transaction_type}', 'TransactionController@index')->name('transaction.index');

@@ -68,6 +68,20 @@
                     </ul>
                 </li>
 
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-shopping-cart"></i>
+                            <span>Attendances</span>
+                        </a>
+
+                        <ul>
+
+                            <li><a href="{{ route('attendance.index') }}">List</a></li>
+                            <li><a href="{{ route('attendance.upload') }}">Bulk Upload</a></li>
+
+                        </ul>
+                    </li>
+
                 <li>
                     <a href="#">
                         <i class="fa fa-shopping-cart"></i>
