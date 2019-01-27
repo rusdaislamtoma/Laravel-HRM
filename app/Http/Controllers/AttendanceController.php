@@ -40,7 +40,6 @@ class AttendanceController extends Controller
     public function store(Request $request){
       //  dd($request->all());
         Excel::import(new AttendancesImport,$request->file('attendance_file'));
-        session()->flash('success','Attendance Uploaded Successfully');
         return redirect()->route('attendance.index');
     }
 

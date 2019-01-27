@@ -31,7 +31,13 @@ class AttendancesImport extends DefaultValueBinder implements ToModel,WithHeadin
                         'in_time' => $row['in_time'],
                         'out_time' => $row['out_time'],
                         'status' => $row['status'],
+                         session()->flash('success','Attendance Uploaded Successfully'),
+
                     ]);
+                }
+                else{
+
+                    session()->flash('error','Attendance Already Exists of Users');
                 }
             }
 

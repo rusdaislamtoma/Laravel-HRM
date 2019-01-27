@@ -14,7 +14,7 @@
                 <button type="submit" class="btn btn-rounded"><i class="fa fa-search"></i></button>
                 {{ Form::close() }}
 
-                <a href="{{ route('attendance.upload') }}" class="addProduct btn btn-lg btn-rounded btn-warning"><i class="fa fa-plus"></i>Upload Bulk Attendance</a>
+                <a href="{{ route('attendance.show') }}" class="addProduct btn btn-lg btn-rounded btn-warning"><i class="fa fa-plus"></i>Export</a>
 
 
             </div>

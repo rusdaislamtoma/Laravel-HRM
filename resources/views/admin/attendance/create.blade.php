@@ -16,7 +16,7 @@
                         <div class="form-group">
                             <label>
                                 <span class="label-text">Attendance File</span><span class="text-danger">*</span>
-                                {{ Form::file('attendance_file',['class'=>'form-control']) }}
+                                {{ Form::file('attendance_file',['class'=>'form-control','required']) }}
 
                             </label>
                         </div>
