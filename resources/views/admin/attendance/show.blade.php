@@ -14,7 +14,7 @@
                 <button type="submit" class="btn btn-rounded"><i class="fa fa-search"></i></button>
                 {{ Form::close() }}
 
-                <a href="{{ route('attendance.show') }}" class="addProduct btn btn-lg btn-rounded btn-warning"><i class="fa fa-plus"></i>Export</a>
+                <a href="{{ route('attendance.show',[$user->id,'export']) }}" class="addProduct btn btn-lg btn-rounded btn-warning"><i class="fa fa-plus"></i>&nbsp;Export</a>
 
 
             </div>
