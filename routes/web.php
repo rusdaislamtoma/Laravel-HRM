@@ -6,6 +6,7 @@ Route::Post('/login', 'LoginController@login')->name('login');
 
 Route::middleware('auth')->group(function (){
     Route::get('dashboard','DashboardController@index')->name('dashboard');
+
     Route::middleware('user-access-control')->group(function () {
         Route::resource('department', 'DepartmentController');
         Route::resource('designation', 'DesignationController');
@@ -34,6 +35,7 @@ Route::middleware('auth')->group(function (){
         Route::get('attendance/{user_id}/{export?}', 'AttendanceController@show')->name('attendance.show');
 
     });
+    
     Route::resource('user', 'UserController')->only(['show']);
     Route::get('transaction/{transaction_type}', 'TransactionController@index')->name('transaction.index');
 

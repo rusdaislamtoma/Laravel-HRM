@@ -40,34 +40,19 @@ class SettingController extends Controller
         {
             $setting= Setting::where('type','logo')->first();
             $old_file=$setting->value;
-           // dd($old_file);
+            unlink($old_file);
+
             $image= $request->file('logo');
             if($image->getClientOriginalExtension()=='png') {
                 $image->move('assets', $image->getClientOriginalName());
                 //dd('assets',$image->getClientOriginalName());
-                //dd('assets',$image->getClientOriginalName());
-
                 $setting->value = 'assets/' . $image->getClientOriginalName();
                 $setting->save();
-                unlink($old_file);
+             
 
             }
         }
 
-      /*  if($request->hasFile('logo')){
-            $setting= Setting::where('type','logo')->first();
-            $old_file=$setting->value;
-            $image= $request->file('logo');
-            if($image->getClientOriginalExtension()=='png'){
-                //dd($user->id . '.' . $image->getClientOriginalExtension());
-
-                $image->move('assets',$image->getClientOriginalName());
-                $setting->value= 'assets/'.$image->getClientOriginalName();
-                $setting->save();
-                unlink($old_file);
-            }
-
-        }*/
         session()->flash('success','Company setting updated');
         return redirect()->back();
 
